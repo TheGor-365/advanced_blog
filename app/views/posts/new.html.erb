@@ -1,9 +1,12 @@
-<h1>New post</h1>
+<h1 class="mb-5">
+  New post
+</h1>
 
-<%= render "form", post: @post %>
+<div class="border rounded p-5">
+  <%= render "form", post: @post %>
+</div>
 
 <br>
-
 <div>
   <%= link_to "Back to posts", posts_path %>
 </div>
