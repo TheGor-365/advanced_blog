@@ -6,6 +6,8 @@ class Post < ApplicationRecord
 
   after_commit :on_create
 
+  has_many :comments, dependent: :destroy
+
   def on_create
     Post.all.each_with_index do |post, post_number|
       post.title = "#{(post_number).to_s} #{post.title}"

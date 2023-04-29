@@ -1,4 +1,7 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: green">
+  <%= notice %>
+</p>
+
 <div class="row">
   <div class="col-6 border rounded p-5">
     <%= render @post %>
@@ -10,5 +13,17 @@
       <%= link_to "Back to posts", posts_path %>
       <%= button_to "Destroy this post", @post, method: :delete, class: "btn btn-link m-0 p-0 text-decoration-none text-danger" %>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="border p-5 rounded col-12">
+    <%= render "comments/form", post: @post %>
+  </div>
+</div>
+<div class="row">
+  <div class="border p-5 rounded col-12">
+    <% @comments.each do |comment| %>
+      <%= render "comments/comment", post: @post, comment: comment %>
+    <% end %>
   </div>
 </div>

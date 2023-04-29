@@ -1,0 +1,4 @@
+<%= form_with(model: [ post, post.comments.build ]) do |f| %>
+  <%= f.rich_text_area :body %>
+  <%= f.submit "Reply", class: "btn btn-sm btn-primary mt-3" %>
+<% end %>

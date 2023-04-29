@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'u/:id', to: 'users#profile', as: 'user'
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

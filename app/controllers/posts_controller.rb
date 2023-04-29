@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def show
     @post.update(views: @post.views + 1)
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   def edit; end
@@ -43,7 +44,6 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
