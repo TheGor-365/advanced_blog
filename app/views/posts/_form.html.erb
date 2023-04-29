@@ -2,10 +2,12 @@
   <%= form_with(model: post) do |form| %>
 
     <% if post.errors.any? %>
-      <p><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved</p>
-      <% post.errors.each do |error| %>
-        <p><%= error.full_message %></p>
-      <% end %>
+      <div class="border p-5 my-5 rounded border-danger">
+        <p class="text-muted"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved</p>
+        <% post.errors.each do |error| %>
+          <small class="text-danger"><%= error.full_message %></small>
+        <% end %>
+      </div>
     <% end %>
 
     <div>

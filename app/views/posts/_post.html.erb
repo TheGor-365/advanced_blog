@@ -1,13 +1,17 @@
 <div id="<%= dom_id post %>">
-  <h3 class="text-muted">
+  <h4 class="text-muted">
     <%= post.title %>
-  </h3>
+  </h4>
 
-  <div>
+  <div class="mb-3">
     <%= post.body %>
   </div>
 
-  <h6 class="mt-5">
+  <small class="text-muted">
+    Posted by: <%= link_to post.user.name, user_path(post.user) %>
+  </small><br>
+
+  <small class="mt-5">
     <%= pluralize(post.views, "view") %>
-  </h6>
+  </small>
 </div>
