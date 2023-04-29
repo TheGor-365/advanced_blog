@@ -5,7 +5,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show; end
+  def show
+    @post.update(views: @post.views + 1)
+  end
+
   def edit; end
 
   def new

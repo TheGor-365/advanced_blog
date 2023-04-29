@@ -6,4 +6,8 @@
   <div>
     <%= post.body %>
   </div>
+
+  <h6 class="mt-5">
+    <%= pluralize(post.views, "view") %>
+  </h6>
 </div>
