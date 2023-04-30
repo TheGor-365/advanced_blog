@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
   get 'u/:id', to: 'users#profile', as: 'user'
+  get 'search', to: 'search#index'
 
   resources :posts do
     resources :comments
