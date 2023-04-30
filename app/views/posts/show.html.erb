@@ -3,27 +3,32 @@
 </p>
 
 <div class="row">
-  <div class="col-6 border rounded p-5">
+  <div class="col-10 border rounded p-5 text-center">
     <%= render @post %>
   </div>
 
-  <div class="col-6 border rounded p-5">
-    <div class="mt-3 float-end">
-      <%= link_to "Edit this post", edit_post_path(@post) %><br>
-      <%= link_to "Back to posts", posts_path %>
-      <%= button_to "Destroy this post", @post, method: :delete, class: "btn btn-link m-0 p-0 text-decoration-none text-danger" %>
+  <div class="col-2 border rounded p-5">
+    <div class="mt-3 text-center">
+      <%= link_to "edit", edit_post_path(@post) %><br>
+      <%= link_to "back", posts_path %>
+      <%= button_to "destroy", @post, method: :delete, class: "btn btn-link m-0 p-0 text-decoration-none text-danger" %>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="border p-5 rounded col-12">
-    <%= render "comments/form", post: @post %>
+
+<div class="row my-2">
+  <div class="border p-5 rounded col-12 bg-light">
+    <%=
+      render "comments/form",
+      post: @post,
+      comment: @post.comments.build,
+      submit_label: 'Reply'
+    %>
   </div>
 </div>
+
 <div class="row">
-  <div class="border p-5 rounded col-12">
-    <% @comments.each do |comment| %>
-      <%= render "comments/comment", post: @post, comment: comment %>
-    <% end %>
-  </div>
+  <% @comments.each do |comment| %>
+    <%= render "comments/comment", post: @post, comment: comment %>
+  <% end %>
 </div>

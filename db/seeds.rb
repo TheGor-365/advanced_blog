@@ -1,5 +1,13 @@
 User.create(
   email: "gor@gor.com",
+  name: "Gor",
+  password: 'password',
+  password_confirmation: 'password'
+)
+
+User.create(
+  email: "eric@eric.com",
+  name: "Eric",
   password: 'password',
   password_confirmation: 'password'
 )
