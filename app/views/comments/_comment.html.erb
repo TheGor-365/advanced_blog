@@ -13,22 +13,20 @@
     </small>
   <% end %>
 
-  <small class="text-muted">
-    Posted <%= time_ago_in_words(comment.created_at) %>
-  </small>
-
   <% if current_user == comment.user %>
     <div class="btn-group float-end" role="group" aria-label="Basic example">
       <%=
-        link_to "Edit", nil, type: 'button', remote: true, class: "btn btn-sm btn-outline-warning",
+        link_to "Edit", nil, type: 'button', remote: true, class: "btn btn-sm btn-warning",
         data: {
           controller: 'comments',
           action: 'comments#toggleForm',
           comments_form_param: "edit-form-#{comment.id}",
-          comments_body_param: "comment-body-#{comment.id}"
-        }
+          comments_body_param: "comment-body-#{comment.id}",
+          comments_edit_param: "edit-button-#{comment.id}"
+        },
+        id: "edit-button-#{comment.id}"
       %>
-      <%= button_to "Delete", [ post, comment ], method: :delete, class: "btn btn-sm btn-outline-danger" %>
+      <%= button_to "Delete", [ post, comment ], method: :delete, class: "btn btn-sm btn-danger" %>
     </div>
 
     <div class="d-none" id="edit-form-<%= comment.id %>">

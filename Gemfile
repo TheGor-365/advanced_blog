@@ -16,6 +16,7 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 gem "image_processing", "~> 1.2"
 gem 'devise'
+gem "noticed", "~> 1.6"
 
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"

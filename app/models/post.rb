@@ -8,6 +8,9 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_noticed_notifications model_name: 'Notification'
+  has_many :notifications, through: :user, dependent: :destroy
+
   def on_create
     Post.all.each_with_index do |post, post_number|
       post.title = "#{(post_number).to_s} #{post.title}"
