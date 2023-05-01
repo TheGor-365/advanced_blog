@@ -19,6 +19,7 @@ gem 'devise'
 gem "noticed", "~> 1.6"
 gem 'ransack', :github => 'activerecord-hackery/ransack', :branch => 'main'
 gem 'friendly_id', '~> 5.4.0'
+gem "activerecord-import", "~> 1.4"
 
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"
@@ -29,7 +30,7 @@ end
 
 group :development do
   gem "web-console"
-
+  gem 'bullet'
   # gem "rack-mini-profiler"
   # gem "spring"
 end

@@ -14,18 +14,37 @@ User.create(
   password_confirmation: 'password'
 )
 
-10.times do |post_number|
-  post = Post.create(
-    title: "Title #{post_number}",
-    body: "Body for post with title: Title #{post_number}",
-    user_id: rand(User.first.id..User.last.id)
-  )
+posts = []
+comments = []
 
-  5.times do |comment_number|
-    Comment.create(
-      body: "Comment #{comment_number}",
-      user_id: User.second.id,
-      post_id: post.id
+elapsed = Benchmark.measure do
+  100.times do |post_number|
+    puts "Creating post #{post_number}"
+
+    post = Post.new(
+      title: "Title #{post_number}",
+      body: "Body for post with title: Title #{post_number}",
+      user_id: User.first.id
     )
+
+    posts.push(post)
+
+    2.times do |comment_number|
+      puts "Creating comment #{comment_number} for post #{post_number}"
+
+      comment = Comment.new(
+        body: "Comment #{comment_number}",
+        user_id: User.second.id,
+        post_id: post.id
+      )
+
+      comments.push(comment)
+    end
   end
 end
+
+Post.import(posts)
+Comment.import(comments)
+
+puts
+puts "Created #{Post.all.count} posts and #{Comment.all.count} comments in #{elapsed.real} seconds"
