@@ -1,3 +1,5 @@
 <li class="dropdown-item">
-  <%= link_to notification.to_notification.message, notification.to_notification.url %>
+  <small>
+    <%= link_to notification.to_notification.message, notification.to_notification.url, class: "text-dark px-3" %>
+  </small>
 </li>

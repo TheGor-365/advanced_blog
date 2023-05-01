@@ -15,7 +15,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td class="p-3"><%= link_to post.title, post %></td>
-        <td class="p-3"><%= post.body.truncate_words(25) %></td>
+        <td class="p-3"><%= post.body.to_plain_text.truncate_words(25) %></td>
         <td class="p-3"><%= link_to post.user.name, post.user %></td>
       </tr>
     <% end %>

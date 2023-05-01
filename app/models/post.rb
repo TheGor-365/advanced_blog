@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
-  validates :body, presence: true, length: { minimum: 3, maximum: 500 }
+  validates :body, presence: true, length: { minimum: 3, maximum: 10000 }
 
   belongs_to :user
 
@@ -8,14 +8,17 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_rich_text :body
+  has_one :content, class_name: 'ActionText::RichText', as: :record, dependent: :destroy
+
   has_noticed_notifications model_name: 'Notification'
-  has_many :notifications, through: :user, dependent: :destroy
+  has_many :notifications, through: :user
 
   def self.ransackable_attributes(auth_object = nil)
     %w[
       id
       title
-      body
+      content
       views
       user_id
       created_at

@@ -1,0 +1,67 @@
+<h1 class="display-1 text-success text-center mb-5">
+  Administrator
+</h1>
+
+<%= render 'admin/nav_links' %>
+
+<div class="text-center mt-5">
+  <div class="btn-group">
+    <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-sm btn-warning px-5' %>
+    <%= button_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger px-5' %>
+  </div>
+</div>
+
+<div class="row my-5">
+  <div class="col-2 border border-secondary rounded p-5">
+    <strong class="text-muted">
+      Title:
+    </strong><br><br>
+    <strong>
+      <%= @post.title %>
+    </strong>
+  </div>
+
+  <div class="col-2 border border-secondary rounded p-5">
+    <strong class="text-muted">
+      Views:
+    </strong><br><br>
+    <%= @post.views %>
+  </div>
+
+  <div class="col-3 border border-secondary rounded p-5">
+    <strong class="text-muted">
+      Author:
+    </strong><br><br>
+    <%= "#{@post.user.name} | #{@post.user.email} | #{pluralize(@post.user.views, 'View')}" %>
+  </div>
+
+  <div class="col-5 border border-secondary rounded p-5">
+    <strong class="text-muted">
+      Content:
+    </strong><br><br>
+    <small>
+      <%= @post.body.to_plain_text.truncate(55) %>
+    </small>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 border border-secondary rounded p-5 text-center">
+    <strong class="text-muted">
+      <%= pluralize(@post.comments.count, 'comment') %>:
+    </strong><br><br>
+
+    <% @post.comments.each do |comment| %>
+      <div class="row mt-1">
+        <div class="border rounded p-3">
+          <span class="text-muted">
+            <%= comment.user.name %>
+          </span>
+          <small>
+            <%= comment.body %>
+          </small>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
