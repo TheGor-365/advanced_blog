@@ -14,37 +14,34 @@ User.create(
   password_confirmation: 'password'
 )
 
-posts = []
-comments = []
-
 elapsed = Benchmark.measure do
-  100.times do |post_number|
+  posts = []
+
+  gor = User.first
+  eric = User.second
+
+  1000.times do |post_number|
     puts "Creating post #{post_number}"
 
     post = Post.new(
       title: "Title #{post_number}",
       body: "Body for post with title: Title #{post_number}",
-      user_id: User.first.id
+      user: gor
     )
 
-    posts.push(post)
-
-    2.times do |comment_number|
+    10.times do |comment_number|
       puts "Creating comment #{comment_number} for post #{post_number}"
 
-      comment = Comment.new(
+      post.comments.build(
         body: "Comment #{comment_number}",
-        user_id: User.second.id,
-        post_id: post.id
+        user: eric
       )
 
-      comments.push(comment)
     end
+    posts.push(post)
   end
+  Post.import(posts, recursive: true)
 end
-
-Post.import(posts)
-Comment.import(comments)
 
 puts
 puts "Created #{Post.all.count} posts and #{Comment.all.count} comments in #{elapsed.real} seconds"
