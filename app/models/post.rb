@@ -2,11 +2,9 @@ class Post < ApplicationRecord
   extend FriendlyId
 
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
-  validates :body, presence: true, length: { minimum: 3, maximum: 10000 }
+  validates :body, presence: true
 
   belongs_to :user
-
-  after_commit :on_create
 
   has_many :comments, dependent: :destroy
 
@@ -26,6 +24,7 @@ class Post < ApplicationRecord
     %w[
       id
       title
+      body
       content
       views
       user_id
@@ -40,11 +39,5 @@ class Post < ApplicationRecord
       comments
       notifications
     ]
-  end
-
-  def on_create
-    Post.all.each_with_index do |post, post_number|
-      post.title = "#{(post_number).to_s} #{post.title}"
-    end
   end
 end

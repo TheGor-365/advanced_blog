@@ -32,7 +32,7 @@
     <strong class="text-muted">
       Author:
     </strong><br><br>
-    <%= "#{@post.user.name} | #{@post.user.email} | #{pluralize(@post.user.views, 'View')}" %>
+    <%= "#{@post.user.full_name} | #{@post.user.email} | #{pluralize(@post.user.views, 'View')}" %>
   </div>
 
   <div class="col-5 border border-secondary rounded p-5">
@@ -55,7 +55,7 @@
       <div class="row mt-1">
         <div class="border rounded p-3">
           <span class="text-muted">
-            <%= comment.user.name %>
+            <%= comment.user.full_name %>
           </span>
           <small>
             <%= comment.body %>

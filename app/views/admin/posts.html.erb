@@ -19,7 +19,7 @@
       <tr>
         <th><%= post.id %></th>
         <td><%= link_to post.title.truncate(15), admin_post_path(post) %></td>
-        <td><%= post.user.name %></td>
+        <td><%= post.user.full_name %></td>
         <td><%= pluralize(post.comments.size, 'comment') %></td>
       </tr>
     <% end %>

@@ -20,6 +20,7 @@ gem "noticed", "~> 1.6"
 gem 'ransack', :github => 'activerecord-hackery/ransack', :branch => 'main'
 gem 'friendly_id', '~> 5.4.0'
 gem "activerecord-import", "~> 1.4"
+gem 'wicked'
 
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"

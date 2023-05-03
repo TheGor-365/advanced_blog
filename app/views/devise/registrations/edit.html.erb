@@ -12,8 +12,41 @@
     </div>
 
     <div class="my-2">
-      <%= f.label :name, class: "form-label" %><br>
-      <%= f.text_field :name, class: "form-control" %>
+      <%= f.label :first_name, class: "form-label" %><br>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+
+    <div class="my-2">
+      <%= f.label :last_name, class: "form-label" %><br>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+
+    <div class="my-3">
+      <%= fields_for :address, resource.address do |c| %>
+        <%= c.hidden_field :id %>
+
+        <div class="container card p-5 form-control">
+          <legend class="text-muted">
+            Address
+          </legend>
+
+          <div>
+            <%= c.text_field :street, class: 'form-control', placeholder: 'street' %>
+          </div>
+          <div>
+            <%= c.text_field :city, class: 'form-control', placeholder: 'street' %>
+          </div>
+          <div>
+            <%= c.text_field :state, class: 'form-control', placeholder: 'street' %>
+          </div>
+          <div>
+            <%= c.text_field :zip, class: 'form-control', placeholder: 'street' %>
+          </div>
+          <div>
+            <%= c.text_field :country, class: 'form-control', placeholder: 'street' %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

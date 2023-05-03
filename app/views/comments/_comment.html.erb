@@ -1,6 +1,6 @@
 <div class="border border-secondary rounded p-3 my-2 comment-<%= comment.id %>">
   <small>
-    <%= comment.user.email %><br>
+    <%= comment.user.full_name %><br>
   </small>
 
   <% if (comment.updated_at - comment.created_at) > 1 %>

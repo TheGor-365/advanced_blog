@@ -1,0 +1,18 @@
+<h1 class="text-center mb-5">
+  Users to follow
+</h1>
+
+<h3 class="my-3">
+  <%= link_to "FINISH", next_wizard_path, class: 'text-success' %>
+</h3>
+
+<% @users.each do |user| %>
+  <small class="text-muted">
+    <%= "[#{user.id}] #{user.email}" %>
+  </small>
+  <br>
+<% end %>
+
+<div class="mt-5">
+  <%= render "after_signup/links" %>
+</div>
