@@ -5,9 +5,10 @@
 <table class="table table-striped table-bordered my-5 shadow">
   <thead class="bg-light">
     <tr>
-      <th class="p-3"><%= sort_link(@query, :title,     'Title', default_order: :asc) %></th>
-      <th class="p-3"><%= sort_link(@query, :body,      'Blog Content') %></th>
-      <th class="p-3"><%= sort_link(@query, :user_name, 'Users') %></th>
+      <th class="p-3"><%= sort_link(@query, :title,          'Title', default_order: :asc) %></th>
+      <th class="p-3"><%= sort_link(@query, :category_name,  'Category', default_order: :asc) %></th>
+      <th class="p-3"><%= sort_link(@query, :body,           'Blog Content') %></th>
+      <th class="p-3"><%= sort_link(@query, :user_full_name, 'Users') %></th>
     </tr>
   </thead>
 
@@ -15,8 +16,9 @@
     <% @posts.each do |post| %>
       <tr>
         <td class="p-3"><%= link_to post.title, post %></td>
+        <td class="p-3"><%= link_to post.category.name, post.category %></td>
         <td class="p-3"><%= post.body.to_plain_text.truncate_words(25) %></td>
-        <td class="p-3"><%= link_to post.user.first_name, post.user %></td>
+        <td class="p-3"><%= link_to post.user.full_name, post.user %></td>
       </tr>
     <% end %>
   </tbody>

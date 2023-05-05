@@ -17,7 +17,7 @@ gem "sassc-rails"
 gem "image_processing", "~> 1.2"
 gem 'devise'
 gem "noticed", "~> 1.6"
-gem 'ransack', :github => 'activerecord-hackery/ransack', :branch => 'main'
+gem 'ransack', '~> 2.5'
 gem 'friendly_id', '~> 5.4.0'
 gem "activerecord-import", "~> 1.4"
 gem 'wicked'

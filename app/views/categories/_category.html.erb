@@ -1,0 +1,21 @@
+<div id="<%= dom_id category %>" class="border rounded p-5">
+  <h2 class="text-muted">
+    <% target = action_name.eql?('show') ? category_path : category %>
+    <%= link_to category.name.capitalize, target, class: 'text-success' %>
+  </h2>
+
+  <small class="text-muted">
+    Display in nav:
+  </small>
+
+  <% if current_user.admin? %>
+    <span class="text-success">
+      <%= category.display_in_nav %>
+    </span>
+  <% end %>
+  <br><br>
+
+  <% category.posts.includes(:user, :rich_text_body).each do |post| %>
+    <%= render 'posts/post', post: post %>
+  <% end %>
+</div>

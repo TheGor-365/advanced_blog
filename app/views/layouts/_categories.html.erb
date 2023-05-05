@@ -1,0 +1,26 @@
+<li class="nav-item dropdown">
+  <a
+    href="#"
+    class="nav-link dropdown-toggle"
+    id="navbar-dropdown"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Post category
+  </a>
+
+  <ul class="dropdown-menu dropdown-menu-lg-end" area-labbeledby="navbarDropdown">
+    <% categories.each do |category| %>
+      <li><%= link_to category.name, category_path(category), class: 'dropdown-item' %></li>
+    <% end %>
+
+    <li><hr class="dropdown-divider"></li>
+    <li><%= link_to 'Categories', categories_path, class: 'dropdown-item' %></li>
+
+    <% if current_user.admin? %>
+      <li><hr class="dropdown-divider"></li>
+      <li><%= link_to 'Create category', new_category_path, class: 'dropdown-item' %></li>
+    <% end %>
+  </ul>
+</li>

@@ -1,0 +1,16 @@
+<p style="color: green">
+  <%= notice %>
+</p>
+
+<h1 class="text-center mb-5">
+  Categories
+</h1>
+
+<% @categories.each do |category| %>
+  <%= render category %>
+  <p>
+    <%= link_to "Show this category", category %>
+  </p>
+<% end %>
+
+<%= link_to "New category", new_category_path %>

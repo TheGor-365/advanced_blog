@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
 
   belongs_to :user
+  belongs_to :category
 
   has_many :comments, dependent: :destroy
 
@@ -36,6 +37,7 @@ class Post < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     %w[
       user
+      category
       comments
       notifications
     ]

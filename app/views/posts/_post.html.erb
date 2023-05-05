@@ -1,11 +1,14 @@
-<div id="<%= dom_id post %>">
+<div id="<%= dom_id post %>" class="border border-secondary rounded my-2 p-5">
   <h4 class="text-muted">
     <%= post.title %>
   </h4>
+  <hr class="col-5">
 
-  <div class="mb-3">
+  <div class="mb-5">
     <%= post.body %>
   </div>
+  
+  <hr class="col-5">
 
   <small class="text-muted">
     Posted by: <%= link_to post.user.full_name, user_path(post.user) %>

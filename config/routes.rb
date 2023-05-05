@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   }
 
   resources :after_signup
+  resources :categories
 end

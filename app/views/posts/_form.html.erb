@@ -20,6 +20,11 @@
       <%= form.rich_text_area :body, class: "form-control" %>
     </div>
 
+    <div class="my-3 col-6">
+      <%= form.label :category, class: "form-label" %>
+      <%= form.select :category_id, options_for_select(Category.all.order(name: :asc).collect { |cat| [ cat.name, cat.id ] }), {}, {class: "form-control"} %>
+    </div>
+
     <div class="mt-3">
       <%= form.submit class: "btn btn-sm btn-success" %>
     </div>

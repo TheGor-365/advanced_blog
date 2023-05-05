@@ -39,19 +39,37 @@ Address.first_or_create!(
 )
 
 
+category = Category.first_or_create!(
+  name: 'First category', display_in_nav: true
+)
+
+Category.first_or_create!(
+  name: 'Second category', display_in_nav: false
+)
+
+Category.first_or_create!(
+  name: 'Third category', display_in_nav: true
+)
+
+Category.first_or_create!(
+  name: 'More category', display_in_nav: true
+)
+
+
 elapsed = Benchmark.measure do
   posts = []
 
-  1000.times do |post_number|
+  100.times do |post_number|
     puts "Creating post #{post_number}"
 
     post = Post.new(
       title: "Title #{post_number}",
       body: "Body for post with title: Title #{post_number}",
-      user: gor
+      user: gor,
+      category: category
     )
 
-    10.times do |comment_number|
+    5.times do |comment_number|
       puts "Creating comment #{comment_number} for post #{post_number}"
 
       post.comments.build(
