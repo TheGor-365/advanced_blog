@@ -1,0 +1,27 @@
+<div id="<%= dom_id project %>" class="my-5">
+  <h2 class="text-center text-success mb-5">
+    <%= project.title %>
+  </h2>
+
+  <div class="row">
+    <div class="col border rounded p-5">
+      <h6 class="text-muted">
+        <%= project.title %>
+      </h6>
+
+      <%= link_to project.link, project.link, class: 'text-success' %>
+
+      <p class="mt-5">
+        Contact me: <%= current_user.email %>
+      </p>
+
+      <p class="float-start">
+        <%= link_to "Show project", project, class: 'btn btn-sm btn-outline-primary' %>
+      </p>
+    </div>
+
+    <div class="col border rounded p-5">
+      <%= project.body %>
+    </div>
+  </div>
+</div>
