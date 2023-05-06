@@ -1,7 +1,46 @@
-<h1 class="text-success display-1">
-  <%= @user.first_name %>
-</h1>
+<div class="row">
+  <div class="col-2">
+    <%= image_tag(@user.avatar, style: 'width: 150px; height: 150px; border-radius: 100%') if @user.avatar.attached? %>
+  </div>
 
-<p class="text-secondary display-6">
-  <%= pluralize(@user.views, "view") %>
-</p>
+  <div class="col-10">
+    <h1 class="text-success display-1">
+      <%= @user.full_name %>
+    </h1>
+
+    <p class="text-secondary">
+      <%= pluralize(@user.comments.size, "comment") %><br>
+      <%= pluralize(@user.views, "view") %><br>
+      <%= pluralize(@total_views, "total post view") %>
+    </p>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-1">
+
+  </div>
+
+  <div class="col-10">
+    <% @posts.each do |post| %>
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title text-center mb-5">
+            <%= link_to post.title, post, class: 'text-success' %>
+          </h5>
+          <p class="card-text">
+            <%= post.body.to_plain_text.truncate_words(100) %>
+          </p>
+          <hr class="col-2">
+          <small class="card-text text-muted">
+            <%= "#{time_ago_in_words(post.created_at)} ago" %>
+          </small>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-1">
+
+  </div>
+</div>

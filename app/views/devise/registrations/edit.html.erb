@@ -12,6 +12,11 @@
     </div>
 
     <div class="my-2">
+      <%= f.label :avatar, class: 'form-label' %><br>
+      <%= f.file_field :avatar, class: 'form-control' %>
+    </div>
+
+    <div class="my-2">
       <%= f.label :first_name, class: "form-label" %><br>
       <%= f.text_field :first_name, class: "form-control" %>
     </div>

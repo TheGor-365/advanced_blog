@@ -57,6 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [
       :email,
       :avatar,
+      :avatar,
       :first_name,
       :last_name,
       :password,
