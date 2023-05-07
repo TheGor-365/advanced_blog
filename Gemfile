@@ -21,6 +21,9 @@ gem 'ransack', '~> 2.5'
 gem 'friendly_id', '~> 5.4.0'
 gem "activerecord-import", "~> 1.4"
 gem 'wicked'
+gem "ahoy_matey"
+gem "groupdate"
+gem "chartkick"
 
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"
